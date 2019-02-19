@@ -72,10 +72,10 @@ class MailerNotification implements LongNotificationInterface{
             break;
             case 'sendmail':
                 $options = $config[$config['transport']];
-                $transport = Swift_SendmailTransport::newInstance('/usr/sbin/sendmail ' . $config['arguments']);
+                $transport = \Swift_SendmailTransport::newInstance('/usr/sbin/sendmail ' . $config['arguments']);
                 break;
             case 'mail':
-                $transport = Swift_MailTransport::newInstance();
+                $transport = \Swift_MailTransport::newInstance();
                 break;
             default:
                 throw new \Exception (" Error, unknown transport {$config['transport']}. Valid transport types are gmail,smtp.");
